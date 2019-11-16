@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather App</title>
+</head>
+<body>
+	<div>
+		<h2>Whats the weather like</h2>
+		<div>
+			<form method="POST">
+				{% csrf_token %}
+			    {{ form.name }}
+			<button>Add City</button><br><br>
+			</form>
+			<div>
+				<table>
+					{% for weather in weathers %}
+
+					<tr>
+
+					<td>
+						<span> <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image"></span>
+					</td>
+					<td>
+						<span>{{ weather.city }}</span><br>
+						<span>{{ weather.temperature }}</span><br>
+						<small>{{ weather.description }}</small><br>
+					</td>
+
+					</tr>
+					{% endfor %}
+
+				</table>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>
